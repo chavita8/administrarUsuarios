@@ -33,6 +33,12 @@ void separar(char *cadena, char *linea, char separador)
 
 }
 
+void fixshell(char *shell){
+	for(int i=0;i<sizeof(shell);i++){
+		printf("%s",shell[i]);
+	}
+}
+
 int main(void){
     char *lenstr;   //puntero a los datos del formulario entrante
     char inputBuffer[MAX_LEN]; //arreglo de datos donde seran guardados los datos del formulario
@@ -44,8 +50,7 @@ int main(void){
     char clave[80];
     char shell[80];
     char comando[100];
-    //char password;
-    //const char *password_cat;
+    char *password;
 
     printf ("Content-type:text/html\n\n");
     printf("<TITLE>Response</TITLE>\n");
@@ -90,8 +95,8 @@ int main(void){
     printf("<p> Usuario: %s",usuario);
     printf("<p> Clave: %s",clave);
     printf("<p> Shell: %s",shell);
-    //password = crypt("asdf","aa");
-    //password_cat = &password;
+    password = crypt(clave,"aa");
+
 
     // CREAR USUARIO
     if((setuid(0)) < 0) printf("<br>setuid: operation not permitted");
@@ -99,8 +104,8 @@ int main(void){
     strcpy(comando, "useradd ");
     strcat(comando, "-d /home/");
     strcat(comando, usuario);
-    //strcat(comando, " -p ");
-    //strcat(comando, password_cat);
+    strcat(comando, " -p ");
+    strcat(comando, password);
     strcat(comando, " -m ");
     strcat(comando, usuario);
     strcat(comando, " 1>exito 2>error");
