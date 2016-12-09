@@ -115,6 +115,7 @@ int main(void){
     strcat(comando, " -m ");
     strcat(comando, "-s ");
     strcat(comando, shell);
+    strcat(comando, " ");
     strcat(comando, usuario);
     strcat(comando, " 1>exito 2>error");
     printf("\n");
