@@ -8,8 +8,7 @@
 
 // Separar: separa datos del formulario
 
-void separar(char *cadena, char *linea, char separador)
-{
+void separar(char *cadena, char *linea, char separador){
     int x, y;
     
     x = 0; y = 0;
@@ -32,11 +31,16 @@ void separar(char *cadena, char *linea, char separador)
     }
 
 }
-
-void fixshell(char *shell){
-	for(int i=0;i<sizeof(shell);i++){
-		printf("%s",shell[i]);
-	}
+//Funcion que remplaza una subcadena(orig) por otra(rep) en una cadena(str) dada.
+void replace_str(char *str, char *orig, char *rep)
+{
+  static char buffer[4096];
+  char *p;
+  p = strstr(str, orig); // Is 'orig' even in 'st
+  strncpy(buffer, str, p-str); // Copy characters from 'str' start to 'orig' st$
+  buffer[p-str] = '\0';
+  sprintf(buffer+(p-str), "%s%s", rep, p+strlen(orig));
+  strcpy(str,buffer);
 }
 
 int main(void){
@@ -97,6 +101,8 @@ int main(void){
     printf("<p> Shell: %s",shell);
     password = crypt(clave,"aa");
 
+    replace_str(shell,"%2F","/");
+    replace_str(shell,"%2F","/");
 
     // CREAR USUARIO
     if((setuid(0)) < 0) printf("<br>setuid: operation not permitted");
@@ -107,11 +113,14 @@ int main(void){
     strcat(comando, " -p ");
     strcat(comando, password);
     strcat(comando, " -m ");
+    strcat(comando, "-s ");
+    strcat(comando, shell);
     strcat(comando, usuario);
     strcat(comando, " 1>exito 2>error");
     printf("\n");
     printf("%s",comando);
     system(comando);
+
     return 0;
 }
 
