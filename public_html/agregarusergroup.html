@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>Grupos</title>
+</head>
+<body>
+<link rel="stylesheet" href="/bootstrap.css" />
+<link rel="stylesheet" href="/index.css" />
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Usuarios</a>
+          <a class="blog-nav-item active" href="/grupos.html">Grupos</a>
+          <a class="blog-nav-item" href="/bdd.html">Base de datos</a>
+        </nav>
+      </div>
+    </div>
+
+   <br/>
+   <br/>
+   <div class="row">
+     <div class="col-sm-2">
+      <div class="sidebar-module">
+        <h4>Grupos</h4>
+        <ol class="list-unstyled">
+          <li><a href="/creargroups.html">Crear</a></li>
+          <li><a href="/listargroups.html">Listar</a></li>
+          <li><a href="/agregarusergroup.html">Agregar Usuario</a></li>
+          <li><a href="/eliminargroups.html#">Eliminar</a></li>
+        </ol>
+      </div>
+    </div><!-- /.blog-sidebar -->
+     <div class="col-sm-6 blog-main">
+             <h2>Agregar Usuario a Grupo</h2>
+             <form action="/cgi-bin/agregarUsuarioGrupo.cgi" method="POST">
+             <div>
+               <label for="nombre">Nombre:</label>
+               <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de Usuario" required>
+             <div>
+               <label for="grupo">Nombre Grupo:</label>
+               <input type="text" id="grupo" name="grupo" class="form-control" placeholder="Nombre de Grupo" required>
+             </div>
+             </div>
+            <div>
+                <input type=submit>
+            </div>
+            </form>
+
+
+     </div><!-- /.blog-main -->
+   </div><!-- /.row -->
+
+</div><!-- /.container -->
+   <br/>
+   <br/>
+<footer class="blog-footer">
+  <p>Manejo de usuarios</p>
+</footer>
+
+</body>
+</html>
