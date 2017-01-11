@@ -3,7 +3,7 @@
 +apt-get install apache2
 +vim /etc/apache2/mods-enabled/cgid.load
 
-+LoadModule cgid_module modules/mod_cgid.so
++LoadModule cgid_module /usr/lib/apache2/modules/mod_cgid.so
 
 +cd /usr/lib/cgi-bin/
 +gcc index.c script.cgi
